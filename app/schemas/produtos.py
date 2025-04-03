@@ -1,7 +1,6 @@
-from typing import Optional
+from typing import Optional, List
 from sqlmodel import Field, Relationship, SQLModel
 from datetime import datetime
-
 from fornecedor import Fornecedor
 
 
@@ -12,6 +11,6 @@ class Produto(SQLModel, table=True):
     fornecedor: Optional[Fornecedor] = Relationship(back_populates="produtos")
     vendido: int = Field(default=None, index=True)
     data_compra: datetime = Field(index=True)
-    data_venda: datetime| None = Field(index=True)
-
+    data_venda: datetime = Field(default=datetime(0, 0, 0) ,index=True)
+    categoria: str = Field(default=None, index=True)
     
