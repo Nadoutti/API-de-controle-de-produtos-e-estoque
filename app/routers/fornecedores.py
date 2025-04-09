@@ -3,7 +3,6 @@ from typing import Annotated
 from sqlmodel import Session, select
 from ..schemas.fornecedor import Fornecedor 
 from ..database.session import get_session
-from app.schemas import fornecedor
 
 
 router = APIRouter(prefix='/fornecedores', tags=['fornecedores'])

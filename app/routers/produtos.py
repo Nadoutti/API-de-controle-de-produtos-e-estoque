@@ -1,5 +1,5 @@
 import datetime
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException
 from typing import Annotated
 from sqlmodel import Session, select
 from ..schemas.produtos import Produto
@@ -53,7 +53,7 @@ def get_vendidos_ultimo_mes(session: SessionDep):
     return produtos 
     
 # listar produtos nao vendidos
-@router.get('/naoVendidos')
+@router.get('/estoque')
 def get_nao_vendidos(session: SessionDep):
     query = select(Produto).where(Produto.vendido == 0)
     produtos = session.exec(query).all()
